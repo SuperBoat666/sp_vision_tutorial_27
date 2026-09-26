@@ -34,3 +34,9 @@ target_link_libraries(opencv ${OpenCV_LIBS} fmt::fmt yaml-cpp tools io tasks)
 
 add_executable(main_test main_test.cpp)
 target_link_libraries(main_test ${OpenCV_LIBS} fmt::fmt yaml-cpp tools io tasks)
+
+add_executable(main_add main_add.cpp)
+target_link_libraries(main_add ${OpenCV_LIBS} fmt::fmt yaml-cpp tools io tasks)
+
+add_executable(main_add_test main_add_test.cpp)
+target_link_libraries(main_add_test ${OpenCV_LIBS} fmt::fmt yaml-cpp tools io tasks)
