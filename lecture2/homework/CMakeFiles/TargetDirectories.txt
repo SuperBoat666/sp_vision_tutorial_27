@@ -1,0 +1,6 @@
+/home/superboat/Desktop/sp_vision_tutorial_27/lecture2/homework/CMakeFiles/cmake_learn.dir
+/home/superboat/Desktop/sp_vision_tutorial_27/lecture2/homework/CMakeFiles/ex1.dir
+/home/superboat/Desktop/sp_vision_tutorial_27/lecture2/homework/CMakeFiles/ex2.dir
+/home/superboat/Desktop/sp_vision_tutorial_27/lecture2/homework/CMakeFiles/ex3.dir
+/home/superboat/Desktop/sp_vision_tutorial_27/lecture2/homework/CMakeFiles/edit_cache.dir
+/home/superboat/Desktop/sp_vision_tutorial_27/lecture2/homework/CMakeFiles/rebuild_cache.dir
