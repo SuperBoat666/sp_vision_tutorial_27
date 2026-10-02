@@ -37,9 +37,22 @@ Pipeline::Pipeline(std::unique_ptr<FrameSource> source, PipelineConfig config)
 
 Pipeline::~Pipeline()
 {
-    // TODO: Make sure Pipeline never destroys running threads.
-}
+    queue_.close();
 
+    // 回收producer线程。
+    if (producer_.joinable())
+    {
+        producer_.join();
+    }
+    // 回收所有 worker 线程。
+    for (auto &worker : workers_)
+    {
+        if (worker.joinable())
+        {
+            worker.join();
+        }
+    }
+}
 void Pipeline::start()
 {
     std::filesystem::create_directories(config_.output_directory);

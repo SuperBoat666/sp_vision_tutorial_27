@@ -55,9 +55,9 @@ bool ImageSequenceSource::next(Frame &frame)
     frame.id = static_cast<int>(next_index_++);
     frame.expected_checksum = checksum(buffer_);
 
-    // TODO: The camera will reuse its internal buffer. Make sure this frame
-    // remains valid after the next call to next().
-    frame.image = buffer_;
+      // buffer_ 是 producer 复用的缓冲区 下一次 next() 会覆盖它
+    // clone() 是深拷贝，生成一份独立的像素数据 后续 buffer_ 被覆盖不影响它
+    frame.image = buffer_.clone();
 
     if (producer_delay_ms_ > 0)
     {
