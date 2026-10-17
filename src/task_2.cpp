@@ -47,7 +47,7 @@ int main(int argc, char * argv[])
   std::chrono::steady_clock::time_point t;
 
   // ===== Task_2 常量 =====
-  constexpr double BULLET_SPEED  = 20.0;                  // 弹速 m/s，实测标定值（改动1：注释）
+  constexpr double BULLET_SPEED  = 20.0;                  // 弹速 m/s，实测标定值
   constexpr double FIRE_INTERVAL = 0.2;                   // 5Hz → 0.2s
   constexpr int    MAX_FIRE      = 10;                    // 每挡位最多10发
   constexpr double YAW_TOL       = 0.5 * CV_PI / 180.0;   // 开火 yaw 阈值
@@ -121,9 +121,15 @@ int main(int argc, char * argv[])
         x[2] - r * std::sin(a_pred),
         x[4]
       };
+      
+      // 用 xyz2ypd (内部为 arctan2) 计算绝对指向角，避开 Task 1 的 ypr 坑
       Eigen::Vector3d ypd = tools::xyz2ypd(pred_armor);
       double target_yaw   = ypd[0];
       double target_pitch = ypd[1];
+
+      // 如果现场发现云台方向反了，请在此处取消注释
+      // target_yaw = -target_yaw; 
+      // target_pitch = -target_pitch;
 
       // 6.4 转速挡位判定 & 计数复位
       double abs_w = std::abs(w);
